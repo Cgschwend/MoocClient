@@ -1,0 +1,70 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+            layout:decorator="jobDetail">
+
+<head th:include="jobList :: [//head]" />
+
+  <body>
+  <nav class="navbar navbar-default ">
+
+    <div class="container container-fluid">
+
+      <div class="logo navbar-header">
+
+        <!-- <img src="/clover.png" style="width:30px;height:30px" alt="Tech Jobs"/> -->
+
+        <header>
+          <h2 class="site_navbar_title">Local Technology Job Listings Mooc Client</h2>
+        </header>
+
+      </div>
+
+    </div>
+
+
+
+  </nav>
+  <div class="container" th:layout:fragment="moocList">
+
+    <content id="center-content">
+
+
+    <h2></h2>
+    <div th:unless="${#lists.isEmpty(moocs)}">
+      <dl th:each="mooc : ${moocs}">
+
+        <dt class="moocHeadline">
+          <img th:src="${{mooc.imageUrl}}" style="width:80px;height:24px" alt="Mooc Provider Icon" />
+          <a th:href="${mooc.moocUrl}"
+             th:text="${mooc.title}">Title</a> by
+          <span th:text="${mooc.provider}">Provider</span>
+          (views: <span th:text="${mooc.views}">views</span>)
+          (ratings: <span th:text="${mooc.ratings}">ratings</span>)
+          (subject tags: <span th:text="${mooc.subjectTags}">subjectTags</span>)
+        </dt>
+          <!--/* This code will be removed at thymeleaf parsing time! */-->
+
+      </dl>
+    </div>
+    
+    <hr/>
+
+  </content>
+
+  </div>
+
+  <div th:include="jobList :: [//footer[@id='center-footer']]"></div>
+  <footer id="center-footer" class="footer" th:fragment="footer">
+
+    <div id="footerText" class="container" >
+
+      <div>
+        <span> &copy;&nbsp;2017&nbsp;Carol&nbsp;Gschwend</span>
+        <div>View code <a href="https://github.com/Cgschwend/MoocList" target="_blank">@ GitHub</a></div>
+      </div>
+
+    </div>
+
+  </footer>
+  </body>
+</html>

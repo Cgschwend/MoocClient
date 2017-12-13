@@ -1,0 +1,19 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:include="jobList :: [//head]" />
+<body>
+<h3>Showing Local Tech Meetups:</h3>
+<form method="POST" th:action="@{/}">
+    <input type="submit" name="meetup" value="meetup"></input>
+    <div th:fragment="content">
+        <div th:unless="${#lists.isEmpty(meetups)}">
+            <dl th:each="meetup : ${meetups}" class="list-group-item">
+                <p th:text="'So, ' + ${meetup} + '!'" />
+            </dl>
+        </div>
+    </div>
+</form>
+<div th:include="jobList :: [//footer[@id='center-footer']]"></div>
+</body>
+</html>

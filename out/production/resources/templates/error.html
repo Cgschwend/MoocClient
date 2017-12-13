@@ -1,0 +1,57 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+  <head id="headerFragment" th:fragment="headerFragment">
+    <title>Oops!</title>
+    <link rel="icon" type="image/png" th:href="@{/black_clover.png}"></link>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css}" href="@{https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css}"></link>
+
+
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}"></link>
+    <link rel="stylesheet" type="text/css" href="../styleNow.css" th:href="@{/styleNow.css}"></link>
+  </head>
+  <nav class="navbar navbar-default ">
+
+    <div class="container container-fluid">
+
+      <div class="logo navbar-header">
+
+        <!-- <img src="/clover.png" style="width:30px;height:30px" alt="Tech Jobs"/> -->
+
+        <header>
+          <h2 class="site_navbar_title">Local Technology Job Listings</h2>
+        </header>
+
+      </div>
+
+    </div>
+
+
+
+  </nav>
+
+  <html>
+    <div class="errorPage">
+      <span class="oops">Oops!</span><br/>
+      <img th:src="@{/MissingPage.png}"></img>
+      <p>There seems to be a problem with the page you requested 
+         (<span text="${path}">/</span>).</p>
+      <p th:text="${'Details: ' + message}"></p>
+    </div>
+  </html>
+
+</html>
+
+<footer id="center-footer" class="footer" th:fragment="footer">
+
+  <div id="footerText" class="container" >
+
+    <div>
+      <span> &copy;&nbsp;2017&nbsp;Carol&nbsp;Gschwend</span>
+      <div>View code <a href="https://github.com/Cgschwend/MoocList" target="_blank">@ GitHub</a></div>
+    </div>
+
+  </div>
+
+</footer>

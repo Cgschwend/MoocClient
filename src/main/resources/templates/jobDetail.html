@@ -1,0 +1,136 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head id="headerFragment" th:fragment="headerFragment">
+    <title>Job Detail</title>
+    <link rel="icon" type="image/png" th:href="@{/black_clover.png}"></link>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css}" href="@{https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css}"></link>
+
+
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}"></link>
+    <link rel="stylesheet" type="text/css" href="../styleNow.css" th:href="@{/styleNow.css}"></link>
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-default ">
+
+    <div class="container container-fluid">
+
+        <div class="logo navbar-header">
+
+            <header>
+                <h2 class="site_navbar_title">Local Technology Job Listings</h2>
+            </header>
+
+        </div>
+
+    </div>
+
+
+</nav>
+
+<div class="container">
+
+    <header>
+        <h2></h2>
+    </header>
+
+
+    <div th:unless="${#lists.isEmpty(jobDetails)}">
+        <dl th:each="job : ${jobDetails}">
+
+        <dt class="jobHeadline">
+
+            <img class="media-object profile__img-company" th:src="${{job.image_url}}"  alt="Company Icon"/>
+            <span th:text="${job.title}">Title</span>
+            <p> </p>
+            <span th:text="${job.postdate}">Post Date</span>
+            <span th:text="${job.categories}">Job Categories</span>
+
+        </dt>
+
+            <p th:text="${{job.description}}">Job Description</p>
+
+
+            <h4>Employer Job Listing Link</h4>
+            <a th:href="${job.job_url}"
+               th:text="${job.job_url}"></a>
+
+            <hr/>
+
+        <h5>Find recommended moocs:</h5>
+
+        <form method="POST" th:action="@{/job/jobDetail/{id}(id=${job.id},tags=${job.skills_tags})}" target="_self">
+
+            <button><input class="mooc-button" type="image" name="moocs" th:value="${job.skills_tags}">
+                <img src="/clover.png" style="width:20px;height:20px" alt="Meetup Icon"/> </input></button>
+
+            <div th:include="moocList :: moocList"></div>
+
+        </form>
+
+        </dl>
+
+
+    </div>
+
+
+<div th:if="${#lists.isEmpty(jobDetails)}">
+    <p>There are no details in the job list</p>
+</div>
+
+
+    <div class="container" th:layout:fragment="moocList">
+
+        <content id="center-content">
+
+            <div th:unless="${#lists.isEmpty(moocs)}">
+                <h2></h2>
+                <dl th:each="mooc : ${moocs}">
+
+                    <dt class="moocHeadline">
+
+                            <img th:src="${{mooc.imageUrl}}" style="width:80px;height:24px" alt="Mooc Provider Icon" />
+                            <a th:href="${mooc.moocUrl}"
+                               th:text="${mooc.title}">Title</a> by
+                            <span th:text="${mooc.provider}">Provider</span>
+                            (views: <span th:text="${mooc.views}">views</span>)
+                            (ratings: <span th:text="${mooc.ratings}">ratings</span>)
+                            (subject tags: <span th:text="${mooc.subjectTags}">subjectTags</span>)
+
+                    </dt>
+
+
+                </dl>
+            </div>
+
+            <hr/>
+
+        </content>
+
+    </div>
+
+
+</div>
+
+
+<footer id="center-footer" class="footer" th:fragment="footer">
+
+    <div id="footerText" class="container" >
+
+        <div>
+            <span> &copy;&nbsp;2017&nbsp;Carol&nbsp;Gschwend</span>
+            <div>View code <a href="https://github.com/Cgschwend/MoocList" target="_blank">@ GitHub</a></div>
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>

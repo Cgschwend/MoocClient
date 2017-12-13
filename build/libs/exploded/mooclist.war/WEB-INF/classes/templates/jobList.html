@@ -1,0 +1,148 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+
+
+<head id="headerFragment" th:fragment="headerFragment">
+    <title>Job List</title>
+    <link rel="icon" type="image/png" th:href="@{/clover.png}"></link>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css}" href="@{https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css}"></link>
+
+
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}"></link>
+    <link rel="stylesheet" type="text/css" href="../styleNow.css" th:href="@{/styleNow.css}"></link>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default ">
+
+        <div class="container container-fluid">
+
+            <div class="logo navbar-header">
+
+                <header>
+                    <h2 class="site_navbar_title">Local Technology Job Listings</h2>
+                </header>
+
+            </div>
+
+        </div>
+
+
+
+    </nav>
+
+    <div class="container">
+
+    <div th:unless="${#lists.isEmpty(jobs)}">
+        <dl th:each="job : ${jobs}">
+            <article>
+            <dt class="jobHeadline">
+
+
+                <article class="media well listing-item listing-item__jobs  ">
+
+                    <div class="media-left listing-item__logo">
+                        <a th:href="@{/job/jobDetail/{id}(id=${job.id})}">
+                           <!-- <img class="media-object profile__img-company" th:src="${{job.image_url}}" style="width:80px;height:28px" alt="Company Icon"/> -->
+                            <img class="media-object profile__img-company" th:src="${{job.image_url}}"  alt="Company Icon"/>
+                        </a>
+                    </div>
+
+                    <div class="media-body">
+                        <div class="media-heading listing-item__title">
+                            <a th:href="@{/job/jobDetail/{id}(id=${job.id})}" class="link" th:text="${job.title}"></a>
+                        </div>
+
+                        <div class="listing-item__info clearfix">
+                            <span class="listing-item__info--item listing-item__info--item-company"
+                               th:text="${job.categories}">
+                            </span>
+                        </div>
+                        <div class="listing-item__desc hidden-sm hidden-xs">
+                        Job Description:
+                            <span th:text="${job.description}"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="media-right text-right">
+                        <div class="listing-item__date">
+                            <span th:text="${job.postdate}">Post Date</span>
+                        </div>
+                    </div>
+
+                    <div class="listing-item__desc visible-sm visible-xs">
+                        Job Description:
+                        <span th:text="${job.categories}"></span>
+                        <span th:text="${job.description}"></span>
+                    </div>
+
+
+                </article>
+
+
+            </dt>
+            </article>
+        </dl>
+    </div>
+
+    <div th:if="${#lists.isEmpty(jobs)}">
+        <p>There are no jobs in the job list</p>
+    </div>
+
+
+    <hr/>
+
+
+    <h5>Find Local Tech Meetup Groups:</h5>
+
+    <form method="POST" th:action="@{/}" target="_self">
+
+        <button><input class="meetup-button" type="image" value="" name="meetup">
+
+            <img src="https://secure.meetupstatic.com/s/img/5455565085016210254/logo/svg/logo--script.svg" style="width:75px;height:26px" alt="Meetup Icon"/></input></button>
+
+        <div th:fragment="meetupContent">
+            <div th:unless="${#lists.isEmpty(meetups)}">
+             <dl th:each="meetup : ${meetups}" class="meetup-list-group-item">
+
+
+                 <span  th:if="${meetup.highres_link}!=null">
+                     <img th:src="${meetup.highres_link}" style="width:20px;height:20px"/>
+                 </span>
+                 <span  th:if="${meetup.highres_link}==null">
+                    <img src="https://secure.meetupstatic.com/s/img/786824251364989575000/logo/swarm/m_swarm_630x630.png" style="width:25px;height:25px"/>
+                 </span>
+
+                 <a th:href="${meetup.link}"
+                    th:text="${meetup.name}"></a>
+
+                 <span th:text="${meetup.city}"></span>
+
+             </dl>
+            </div>
+        </div>
+    </form>
+
+    </div>
+
+
+    <footer id="center-footer" class="footer" th:fragment="footer">
+
+        <div id="footerText" class="container" >
+
+        <div>
+            <span> &copy;&nbsp;2017&nbsp;Carol&nbsp;Gschwend</span>
+            <div>View code <a href="https://github.com/Cgschwend/MoocList" target="_blank">@ GitHub</a></div>
+        </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

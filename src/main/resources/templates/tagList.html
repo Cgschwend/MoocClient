@@ -1,0 +1,62 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:include="jobList :: [//head]" />
+
+<body>
+<nav class="navbar navbar-default ">
+
+    <div class="container container-fluid">
+
+        <div class="logo navbar-header">
+
+            <!-- <img src="/clover.png" style="width:30px;height:30px" alt="Tech Jobs"/> -->
+
+            <header>
+                <h2 class="site_navbar_title">Local Technology Job Listings</h2>
+            </header>
+
+        </div>
+
+    </div>
+
+
+
+</nav>
+<div class="container">
+
+    <h2>Tag List</h2>
+    <div th:unless="${#lists.isEmpty(tags)}">
+        <dl th:each="t : ${tags}">
+
+            <dt class="tagHeadline">
+                <span th:text="${t.tag}">Tag</span>
+                <span th:text="${t.moocid}">Mooc Ids</span>
+
+            </dt>
+            <!--/* This code will be removed at thymeleaf parsing time! */-->
+        </dl>
+    </div>
+    <div th:if="${#lists.isEmpty(tags)}">
+        <p>There are no tags in the tag list</p>
+    </div>
+
+    <hr/>
+
+</div>
+
+<!-- <div th:include="jobList :: [//footer[@id='center-footer']]"></div> -->
+<footer id="center-footer" class="footer" th:fragment="footer">
+
+    <div id="footerText" class="container" >
+
+        <div>
+            <span> &copy;&nbsp;2017&nbsp;Carol&nbsp;Gschwend</span>
+            <div>View code <a href="https://github.com/Cgschwend/MoocList" target="_blank">@ GitHub</a></div>
+        </div>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
