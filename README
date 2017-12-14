@@ -1,0 +1,20 @@
+MoocClient offers various endpoints to receive MOOC recommendation information.  
+
+MoocClient can be access at http://moocservice.us-east-2.elasticbeanstalk.com/   
+
+MoocClient serves MOOC recommendation information in JSON.
+
+
+Current MoocClient endpoints are:
+
+/tags		Shows current mooc subject tags.
+
+/tags/{tag}	Shows each MOOC tagged with the specified subject {tag}.
+		i.e. /tags/Java
+
+/moocs		Shows all MOOCs in the MOOC Database.
+
+/moocs/{tags}	Shows all MOOCs tagged with any of the specified {tags} where {tags} are separated with commas.
+		i.e. /moocs/Java,HTML5  	
+
+/health		Shows status of the MoocClient.

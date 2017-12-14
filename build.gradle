@@ -19,9 +19,9 @@ apply plugin: 'war'
 
 
 war {
-	baseName = 'mooclist'
+	baseName = 'moocClient'
 	version = '0.0.1-SNAPSHOT'
-	archiveName = 'mooclist.war'
+	archiveName = 'moocClient.war'
 }
 sourceCompatibility = 1.7
 targetCompatibility = 1.7

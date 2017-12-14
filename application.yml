@@ -11,7 +11,7 @@ spring:
 spring:
   profiles: production
   datasource:
-    url: jdbc:postgresql://aa4laqz8u27754.cnb0uevtgcxp.us-east-2.rds.amazonaws.com/ebdb
+    url: jdbc:postgresql://aa1awaszo27j09d.cnb0uevtgcxp.us-east-2.rds.amazonaws.com/ebdb
     username: CGschwend
     password: Garrison29
   jpa:

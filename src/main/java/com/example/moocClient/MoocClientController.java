@@ -50,7 +50,7 @@ public class MoocClientController {
 
 
 
-
+//-------    Call API
     @RequestMapping(value="job/jobDetail/{id}", method = RequestMethod.POST)
     public String tagList(Model model, @RequestParam("tags") String tag, @PathVariable("id") Integer id) {
 

@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: com.example.mooclist.MooclistApplication
+Main-Class: com.example.moocClient.MoocClientApplication
 
