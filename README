@@ -1,20 +1,7 @@
-MoocClient offers various endpoints to receive MOOC recommendation information.  
+MoocClient displays local tech job openings. 
 
-MoocClient can be access at http://moocservice.us-east-2.elasticbeanstalk.com/   
+It acceses Meetup API to display local Meetup groups.
 
-MoocClient serves MOOC recommendation information in JSON.
+It also accesses MoocService API to receive MOOC recommendations relevant to a spefic job opening.
 
 
-Current MoocClient endpoints are:
-
-/tags		Shows current mooc subject tags.
-
-/tags/{tag}	Shows each MOOC tagged with the specified subject {tag}.
-		i.e. /tags/Java
-
-/moocs		Shows all MOOCs in the MOOC Database.
-
-/moocs/{tags}	Shows all MOOCs tagged with any of the specified {tags} where {tags} are separated with commas.
-		i.e. /moocs/Java,HTML5  	
-
-/health		Shows status of the MoocClient.
